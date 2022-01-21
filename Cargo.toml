@@ -1,0 +1,13 @@
+[package]
+
+name = "yaxpeax-nd812"
+version = "1.0.0"
+authors = [ "iximeow <me@iximeow.net>" ]
+license = "0BSD"
+repository = "http://git.iximeow.net/yaxpeax-nd812/"
+description = "nd812 decoder for the yaxpeax project"
+keywords = ["nd812", "microcomputer", "disassembler"]
+edition = "2018"
+
+[dependencies]
+yaxpeax-arch = { version = "0.2.4", default-features = false, features = [] }
