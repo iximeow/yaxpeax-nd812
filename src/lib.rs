@@ -71,7 +71,9 @@
 //!
 //! additionally, `yaxpeax-nd812` implements `yaxpeax-arch` traits for generic use, such as
 //! [`yaxpeax_arch::LengthedInstruction`]. [`yaxpeax_arch::Arch`] is implemented by
-//! the unit struct [`ND812`].
+//! the unit struct [`ND812`]. `yaxpeax-nd812` does not decode from a `U8Reader`, like many other
+//! decodes, but does decode from an `ND812Reader` that can be trivially constructed from a
+//! `U8Reader`.
 //!
 //! ## `#![no_std]`
 //!
