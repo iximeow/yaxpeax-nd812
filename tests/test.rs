@@ -27,6 +27,26 @@ fn test_display(data: &[u16], expected: &'static str) {
 }
 
 #[test]
+fn test_decoder_does_not_panic() {
+    for i in 0..0o7777_7777 {
+        let low = (i & 0o7777) as u16;
+        let high = (i >> 12) as u16;
+        let data = &[low, high];
+        let mut reader = yaxpeax_nd812::ND812Reader::of_u16(data);
+        match yaxpeax_nd812::InstDecoder::default().decode(&mut reader) {
+            Ok(instr) => {
+                let displayed = instr.to_string();
+                assert!(displayed.len() > 0);
+            }
+            Err(e) => {
+                let displayed = e.to_string();
+                assert!(displayed.len() > 0);
+            }
+        }
+
+    }
+}
+#[test]
 fn test_disassembly() {
     test_display(&[0o5464], "stj $+0x34"); // symbol name from IM41-1085
     test_display(&[0o6137], "jmp $-0x1f"); // symbol name from IM41-1085
